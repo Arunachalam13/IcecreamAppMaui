@@ -14,11 +14,11 @@ public partial class OnboardingPage : ContentPage
 
     private async void Signin_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"//{nameof(SignInPage)}");
+        await Shell.Current.GoToAsync(nameof(SignInPage));
     }
 
     private async void Signup_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"//{nameof(SignUpPage)}");
+        await Shell.Current.GoToAsync(nameof(SignUpPage));
     }
 }
