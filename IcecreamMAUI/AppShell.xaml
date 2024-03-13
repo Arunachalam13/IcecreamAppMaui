@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IcecreamMAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:IcecreamMAUI"
+    xmlns:pages="clr-namespace:IcecreamMAUI.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="IcecreamMAUI">
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />-->
+
+    <ShellContent ContentTemplate="{DataTemplate pages:OnboardingPage}"
+                  Shell.FlyoutBehavior="Disabled"
+                  Shell.FlyoutItemIsVisible="False"/>
+    <TabBar FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home"
+                      Icon="home"
+                      ContentTemplate="{DataTemplate pages:HomePage}"
+                      Route="HomePage"/>
+        <ShellContent Title="Cart"
+                      Icon="cart"
+                      ContentTemplate="{DataTemplate pages:CartPage}"
+                      Route="CartPage"/>
+        <ShellContent Title="Profile"
+                      Icon="user"
+                      ContentTemplate="{DataTemplate pages:ProfilePage}"
+                      Route="ProfilePage"/>
+    </TabBar>
+
+    <Shell.FlyoutHeader>
+        <Border BackgroundColor="DeepPink"
+                StrokeThickness="0"
+                Padding="10">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Spacing="10">
+                <Image Source="ice_cream"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       HorizontalOptions="Center"/>
+                <Label Text="MAUI Ice Cream"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                       TextColor="White"
+                       TextTransform="Uppercase"
+                       FontAttributes="Bold"/>
+            </VerticalStackLayout>
+        </Border>
+    </Shell.FlyoutHeader>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  RowDefinitions="Auto,Auto"
+                  Padding="10"
+                  ColumnSpacing="15"
+                  RowSpacing="5">
+                <Image HeightRequest="24"
+                       WidthRequest="24"
+                       Source="{Binding FlyoutIcon}"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       TextColor="DeepPink"/>
+                <Image Grid.Column="2"
+                       Source="right_arrow.png"
+                       HeightRequest="24"
+                       WidthRequest="24"/>
+                <BoxView Grid.Row="1"
+                         Grid.ColumnSpan="2"
+                         HeightRequest="1"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.FlyoutFooter>
+        <Border BackgroundColor="DeepPink"
+                StrokeThickness="0"
+                Padding="10">
+            <Label Text="Developed by Arunachalam"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontSize="15"
+                   FontAttributes="Bold"/>
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="FlyoutFooter_Tapped"/>
+            </Border.GestureRecognizers>
+        </Border>
+    </Shell.FlyoutFooter>
+
+</Shell>
