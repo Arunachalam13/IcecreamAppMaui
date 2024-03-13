@@ -27,5 +27,10 @@ namespace IcecreamMAUI
                 Routing.RegisterRoute(pageType.Name, pageType);
             }
         }
+
+        private async void FlyoutFooter_Tapped(object sender, TappedEventArgs e)
+        {
+            await Launcher.OpenAsync("https://github.com/Arunachalam13");
+        }
     }
 }
