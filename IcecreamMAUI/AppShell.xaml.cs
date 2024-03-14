@@ -32,5 +32,10 @@ namespace IcecreamMAUI
         {
             await Launcher.OpenAsync("https://github.com/Arunachalam13");
         }
+
+        private async void SignoutMenuItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.DisplayAlert("Alert", "Signout menu item clicked", "Ok");
+        }
     }
 }
