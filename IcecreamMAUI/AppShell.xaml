@@ -5,9 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:IcecreamMAUI"
     xmlns:pages="clr-namespace:IcecreamMAUI.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Shell.FlyoutBehavior="Flyout"
     Title="IcecreamMAUI">
 
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="DeepPink"
+                                   StatusBarStyle="LightContent"/>
+    </Shell.Behaviors>
     <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
@@ -31,6 +36,30 @@
                       Route="ProfilePage"/>
     </TabBar>
 
+    <MenuItem IconImageSource="log_out.png"
+              Text="Sign out"
+              Clicked="SignoutMenuItem_Clicked"/>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  Padding="10"
+                  ColumnSpacing="15"
+                  RowSpacing="5">
+                <Image HeightRequest="24"
+                       WidthRequest="24"
+                       Source="{Binding Icon}">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="DeepPink"/>
+                    </Image.Behaviors>
+                </Image>
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       TextColor="DeepPink"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
     <Shell.FlyoutHeader>
         <Border BackgroundColor="DeepPink"
                 StrokeThickness="0"
@@ -40,7 +69,8 @@
                 <Image Source="ice_cream"
                        HeightRequest="150"
                        WidthRequest="150"
-                       HorizontalOptions="Center"/>
+                       HorizontalOptions="Center">
+                </Image>
                 <Label Text="MAUI Ice Cream"
                        HorizontalOptions="Center"
                        FontSize="18"
@@ -60,14 +90,22 @@
                   RowSpacing="5">
                 <Image HeightRequest="24"
                        WidthRequest="24"
-                       Source="{Binding FlyoutIcon}"/>
+                       Source="{Binding FlyoutIcon}">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="DeepPink"/>
+                    </Image.Behaviors>
+                </Image>
                 <Label Grid.Column="1"
                        Text="{Binding Title}"
                        TextColor="DeepPink"/>
                 <Image Grid.Column="2"
                        Source="right_arrow.png"
                        HeightRequest="24"
-                       WidthRequest="24"/>
+                       WidthRequest="24">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="DeepPink"/>
+                    </Image.Behaviors>
+                </Image>
                 <BoxView Grid.Row="1"
                          Grid.ColumnSpan="2"
                          HeightRequest="1"/>
